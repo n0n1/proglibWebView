@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, Proglib!")
-            .padding()
+			WebView(type: .public, url: "https://proglib.io")
     }
 }
 
