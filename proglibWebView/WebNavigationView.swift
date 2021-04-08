@@ -9,7 +9,34 @@ import SwiftUI
 
 struct WebNavigationView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		VStack {
+			Divider()
+			HStack(spacing: 10) {
+				Divider()
+				Button(action: {}, label: {
+					Image(systemName: "chevron.left")
+						.font(.system(size: 30, weight: .regular))
+						.imageScale(.medium)
+				})
+				Divider()
+				Button(action: {}, label: {
+					Image(systemName: "chevron.right")
+						.font(.system(size: 30, weight: .regular))
+						.imageScale(.medium)
+				})
+				Divider()
+				Spacer()
+				Divider()
+				Button(action: {}, label: {
+					Image(systemName: "arrow.clockwise")
+						.font(.system(size: 30, weight: .regular))
+						.imageScale(.medium)
+				})
+				Divider()
+			}
+			.frame(height: 50)
+			Divider()
+		}
     }
 }
 
