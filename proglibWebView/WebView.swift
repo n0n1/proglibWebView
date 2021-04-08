@@ -16,6 +16,8 @@ struct WebView: UIViewRepresentable {
 	var type: URLType
 	var url: String?
 	
+	@ObservedObject var viewModel: ViewModel
+	
 	func makeUIView(context: Context) -> WKWebView {
 		let preferences = WKPreferences()
 		
@@ -37,4 +39,23 @@ struct WebView: UIViewRepresentable {
 			}
 		}
 	}
+	
+	func makeCoordinator() -> Coordinator {
+		Coordinator(self)
+	}
+	
+	class Coordinator: NSObject, WKNavigationDelegate {
+		var parent: WebView
+		var webViewNavigationSubscriber: AnyCancellable? = nil
+		
+		init(_ webView: WebView) {
+			self.parent = webView
+		}
+		
+		deinit {
+			webViewNavigationSubscriber?.cancel()
+		}
+		
+	}
+	
 }
