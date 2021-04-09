@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+	@ObservedObject var viewModel = ViewModel()
+	@State var isLoaderVisible = true
+	@State var webTitle = ""
     var body: some View {
-			WebView(type: .public, url: "https://proglib.io")
+		ZStack {
+			VStack(spacing: 0) {
+				WebNavigationView()
+				WebView(type: .public, url: "https://proglib.io", viewModel: viewModel)
+				
+			}
+			if isLoaderVisible {
+				LoaderView()
+			}
+		}
     }
 }
 
