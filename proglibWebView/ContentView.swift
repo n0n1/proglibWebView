@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
 	@ObservedObject var viewModel = ViewModel()
 	@State var isLoaderVisible = false
-	@State var webTitle = ""
     var body: some View {
 		ZStack {
 			VStack(spacing: 0) {

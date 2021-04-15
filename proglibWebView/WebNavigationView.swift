@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WebNavigationView: View {
 	@ObservedObject var viewModel: ViewModel
+	@State var webTitle = ""
     var body: some View {
 		VStack {
 			Divider()
@@ -30,6 +31,9 @@ struct WebNavigationView: View {
 						.imageScale(.medium)
 				})
 				Divider()
+				Text(webTitle).onReceive(self.viewModel.webTitle.receive(on: RunLoop.main)) { value in
+					self.webTitle = value
+				}
 				Spacer()
 				Divider()
 				Button(action: {
