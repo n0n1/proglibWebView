@@ -66,6 +66,20 @@ struct WebView: UIViewRepresentable {
 		func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
 			print("didStartProvisionalNavigation")
 			self.parent.viewModel.isLoaderVisible.send(true)
+			self.webViewNavigationSubscriber = self.parent.viewModel.webViewNavigationPublisher.receive(on: RunLoop.main).sink(receiveValue: { navigation in
+				switch navigation {
+					case .backward:
+						if webView.canGoBack {
+							webView.goBack()
+						}
+					case .forward:
+						if webView.canGoForward {
+							webView.goForward()
+						}
+					case .reload:
+						webView.reload()
+				}
+			})
 		}
 		
 		func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {

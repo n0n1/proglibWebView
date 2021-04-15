@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
 		ZStack {
 			VStack(spacing: 0) {
-				WebNavigationView()
+				WebNavigationView(viewModel: viewModel)
 				WebView(type: .public, url: "https://proglib.io", viewModel: viewModel)
 				
 			}.onReceive(self.viewModel.isLoaderVisible.receive(on: RunLoop.main)) { value in
@@ -29,6 +29,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+		ContentView()
     }
 }
