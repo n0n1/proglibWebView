@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 	@ObservedObject var viewModel = ViewModel()
-	@State var isLoaderVisible = true
+	@State var isLoaderVisible = false
 	@State var webTitle = ""
     var body: some View {
 		ZStack {
@@ -17,6 +17,8 @@ struct ContentView: View {
 				WebNavigationView()
 				WebView(type: .public, url: "https://proglib.io", viewModel: viewModel)
 				
+			}.onReceive(self.viewModel.isLoaderVisible.receive(on: RunLoop.main)) { value in
+				self.isLoaderVisible = value
 			}
 			if isLoaderVisible {
 				LoaderView()
