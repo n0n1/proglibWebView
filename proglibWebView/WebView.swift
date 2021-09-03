@@ -68,19 +68,22 @@ struct WebView: UIViewRepresentable {
 			print("didFinish")
 			self.parent.viewModel.isLoaderVisible.send(false)
 			
-			webView.evaluateJavaScript("document.title") { (response, error) in
-				if let error = error {
-					print("Error getting title")
-					print(error.localizedDescription)
+			webView.evaluateJavaScript(getHeaderTitle, in: nil, in: .defaultClient) { result in
+				switch result {
+					case .success(let value):
+						if let title = value as? String {
+							self.parent.viewModel.webTitle.send(title)
+						}
+						
+					case .failure(let error):
+						print(error.localizedDescription)
+					}
 				}
-				
-				guard let title = response as? String else {
-					return
-				}
-				
-				self.parent.viewModel.webTitle.send(title)
+			
+			webView.evaluateJavaScript(hideHeaderTitle, in: nil, in: .defaultClient)
+			
 			}
-		}
+		
 		
 		func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
 			print("didStartProvisionalNavigation")
