@@ -35,8 +35,14 @@ struct WebView: UIViewRepresentable {
 	
 	func updateUIView(_ webView: WKWebView, context: Context) {
 		if let urlValue = url  {
-			if let requestUrl = URL(string: urlValue) {
-				webView.load(URLRequest(url: requestUrl))
+			if type == .local {
+				if let localUrl = Bundle.main.url(forResource: urlValue, withExtension: "html", subdirectory: "www") {
+					webView.loadFileURL(localUrl, allowingReadAccessTo: localUrl.deletingLastPathComponent())
+				}
+			} else if type == .public {
+				if let requestUrl = URL(string: urlValue) {
+					webView.load(URLRequest(url: requestUrl))
+				}
 			}
 		}
 	}

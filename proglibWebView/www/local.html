@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Local HTML</title>
+  <style>
+    body {
+      background: -webkit-linear-gradient(bottom left, #2b2f44 0%,#312442 100%);
+      text-align: center;
+      font-family: monospace;
+      font-weight: bold;
+      font-size: large;
+    }
+    .title {
+      color: #FFFFFF;
+    }
+    .container {
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      grid-auto-flow: row;
+      gap: 12px;
+    }
+    .item {
+      max-width: 600px;
+      padding: 12px;
+      background: #000000;
+      border-radius: 5px;
+      color: #FFFFFF;
+    }
+    #ok {
+      background-color: #000000;
+      color: #FFFFFF;
+      font-size: medium;
+      padding: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="title">Interaction with JavaScript</h1>
+  </header>
+    <div class="container">
+      <div class="item">
+        <h1>Swift</h1>
+      </div>
+      <div class="item">
+        <h1>JavaScript</h1>
+      </div>
+      <button id="ok">OK</button>
+    </div>
+</body>
+</html>

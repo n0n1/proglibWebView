@@ -14,7 +14,7 @@ struct ContentView: View {
 		ZStack {
 			VStack(spacing: 0) {
 				WebNavigationView(viewModel: viewModel)
-				WebView(type: .public, url: "https://proglib.io", viewModel: viewModel)
+				WebView(type: .local, url: "local", viewModel: viewModel)
 				
 			}.onReceive(self.viewModel.isLoaderVisible.receive(on: RunLoop.main)) { value in
 				self.isLoaderVisible = value

@@ -17,6 +17,7 @@
 		427DABB3261A5D3A00FFA9FF /* WebNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427DABB2261A5D3A00FFA9FF /* WebNavigationView.swift */; };
 		42C13B2E261CE81D004DE036 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C13B2D261CE81D004DE036 /* LoaderView.swift */; };
 		42C13B31261CEE8F004DE036 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C13B30261CEE8F004DE036 /* ViewModel.swift */; };
+		42C13B40262E0A19004DE036 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 42C13B3F262E0A19004DE036 /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		427DABB2261A5D3A00FFA9FF /* WebNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNavigationView.swift; sourceTree = "<group>"; };
 		42C13B2D261CE81D004DE036 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		42C13B30261CEE8F004DE036 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		42C13B3F262E0A19004DE036 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		4212F0E726134000009A5CFA /* proglibWebView */ = {
 			isa = PBXGroup;
 			children = (
+				42C13B3F262E0A19004DE036 /* www */,
 				4212F0E826134000009A5CFA /* proglibWebViewApp.swift */,
 				4212F0EA26134000009A5CFA /* ContentView.swift */,
 				42C13B30261CEE8F004DE036 /* ViewModel.swift */,
@@ -152,6 +155,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C13B40262E0A19004DE036 /* www in Resources */,
 				4212F0F026134001009A5CFA /* Preview Assets.xcassets in Resources */,
 				4212F0ED26134001009A5CFA /* Assets.xcassets in Resources */,
 			);
