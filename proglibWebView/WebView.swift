@@ -26,6 +26,7 @@ struct WebView: UIViewRepresentable {
 		configuration.preferences = preferences
 		
 		let webView = WKWebView(frame: CGRect.zero, configuration: configuration)
+		
 		webView.navigationDelegate = context.coordinator
 		webView.allowsBackForwardNavigationGestures = true
 		webView.scrollView.isScrollEnabled = true
@@ -82,7 +83,23 @@ struct WebView: UIViewRepresentable {
 			
 			webView.evaluateJavaScript(hideHeaderTitle, in: nil, in: .defaultClient)
 			
+			webView.callAsyncJavaScript(hideAnyElement, arguments: ["selector":"#ok"], in: nil, in: .defaultClient)
+			
+			let timeout = 3000;
+			webView.callAsyncJavaScript(setTimeoutFor, arguments: [ "timeout":"\(timeout)"], in: nil, in: .defaultClient) { (result) in
+				
+				switch result {
+				case .success(let response):
+					print("Done...");
+					print(response);
+				case .failure(let error):
+					print("Error...");
+					print(error)
+				}
 			}
+
+			
+		}
 		
 		
 		func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
