@@ -41,6 +41,13 @@
   <header>
     <h1 class="title">Interaction with JavaScript</h1>
   </header>
+  <script type = "text/javascript">
+	  sendValueToApp();
+	  
+	  function sendValueToApp() {
+		  window.webkit.messageHandlers.messageAppHandler.postMessage('Hello from web page');
+	  }
+  </script>
     <div class="container">
       <div class="item">
         <h1>Swift</h1>

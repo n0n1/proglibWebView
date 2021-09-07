@@ -24,10 +24,11 @@ struct WebView: UIViewRepresentable {
 		let configuration = WKWebViewConfiguration()
 
 		configuration.preferences = preferences
+		configuration.userContentController.add(context.coordinator, contentWorld: .page, name: "messageAppHandler")
 		
 		let webView = WKWebView(frame: CGRect.zero, configuration: configuration)
-		
 		webView.navigationDelegate = context.coordinator
+		
 		webView.allowsBackForwardNavigationGestures = true
 		webView.scrollView.isScrollEnabled = true
 		return webView
@@ -87,7 +88,7 @@ struct WebView: UIViewRepresentable {
 			
 			let timeout = 3000;
 			webView.callAsyncJavaScript(setTimeoutFor, arguments: [ "timeout":"\(timeout)"], in: nil, in: .defaultClient) { (result) in
-				
+
 				switch result {
 				case .success(let response):
 					print("Done...");
@@ -153,3 +154,14 @@ struct WebView: UIViewRepresentable {
 	}
 	
 }
+
+extension WebView.Coordinator: WKScriptMessageHandler {
+	func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+		if message.name == "messageAppHandler" {
+			if let body = message.body as? String {
+				print("Message body: \(body)")
+			} 
+		}
+	}
+}
+
